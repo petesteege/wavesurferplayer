@@ -1,4 +1,25 @@
 /**
+ * Load jsmediatags library if it's not already loaded
+ * @param {Function} callback - Callback to run after library is loaded
+ */
+function loadJsMediaTags(callback) {
+    if (window.jsmediatags) {
+        callback();
+        return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js';
+    script.onload = callback;
+    script.onerror = () => {
+        console.error('Failed to load jsmediatags library');
+        if (typeof callback === 'function') callback();
+    };
+    document.head.appendChild(script);
+}
+
+
+/**
  * Creates a metadata table for audio files
  * @param {HTMLAudioElement} audioElement - Optional audio element to extract metadata from
  * @param {string} pageType - Type of page ("single-share" or "multi-share")
@@ -212,42 +233,16 @@ if (pageType === "multi-share") {
  * Extracts only the cover art from an audio element
  * @param {HTMLAudioElement} audioElement - The audio element to extract cover art from
  */
+/**
+ * Extracts only the cover art from an audio element
+ * @param {HTMLAudioElement} audioElement - The audio element to extract cover art from
+ */
 function extractCoverArtOnly(audioElement) {
     if (!audioElement || !window.WSConfig || window.WSConfig.use_coverart_background !== true) {
         return;
     }
 
     console.log('Extracting cover art only (no metadata table)');
-    
-    // Load jsmediatags library if it's not already loaded
-// Modify the loadJsMediaTags function in displayMetadataForPanel
-loadJsMediaTags(() => {
-    console.log('jsmediatags loaded, reading tags');
-    
-    // Fetch the file as a blob first
-    fetch(audioUrl)
-        .then(response => response.blob())
-        .then(blob => {
-            try {
-                window.jsmediatags.read(blob, {
-                    onSuccess: function(tag) {
-                        console.log('Tags successfully read');
-                        // Rest of the success handling...
-                    },
-                    onError: function(error) {
-                        // Error handling...
-                    }
-                });
-            } catch (e) {
-                console.error('Tag reading error:', e);
-                updatePanelWithMetadata(metadata);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching audio file:', error);
-            updatePanelWithMetadata(metadata);
-        });
-});
     
     // Extract tags using jsmediatags
     loadJsMediaTags(() => {
@@ -269,6 +264,7 @@ loadJsMediaTags(() => {
         }
     });
 }
+    
 
 
 
@@ -343,22 +339,7 @@ function extractMetadataWithCallback(audioElement, callback, isForPanel) {
         }
     }
     
-    // Load jsmediatags library if it's not already loaded
-    function loadJsMediaTags(callback) {
-        if (window.jsmediatags) {
-            callback();
-            return;
-        }
-        
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js';
-        script.onload = callback;
-        script.onerror = () => {
-            console.error('Failed to load jsmediatags library');
-            callback(metadata);
-        };
-        document.head.appendChild(script);
-    }
+// Use jsmediatags to extract metadata
     
     // Extract tags using jsmediatags
     loadJsMediaTags(() => {
