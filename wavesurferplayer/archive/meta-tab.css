@@ -1,0 +1,245 @@
+/* audio-panel.css - Styles for the audio information panel */
+
+/* Basic panel styling */
+.right-panel {
+    width: 0;
+    float: right;
+    background: var(--color-main-background, rgb(16,16,16));
+    overflow: hidden; /* Hide all overflow during transition */
+    margin-top: 270px;
+    height: calc(100vh - 310px);
+    transition: width 0.3s ease-in-out;
+    max-height: 100vh;
+}
+
+/* Expanded panel state */
+body.has-panel .right-panel {
+    width: 35%;
+    overflow-y: auto; /* Allow vertical scrolling when open */
+}
+
+/* Inner panel container with fixed width */
+.panel {
+    width: 35vw; /* Match the expanded panel width */
+    min-width: 300px;
+}
+
+/* App content styling */
+#app-content {
+    float: left;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+}
+
+/* App content when panel is visible */
+body.has-panel #app-content {
+    width: 65%;
+    border-right: 1px solid var(--col-line-dim);
+}
+
+/* Panel header */
+.panel-header { 
+    padding: 15px;
+    border-bottom: 1px solid var(--col-line-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Close button */
+#panel-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Panel content area */
+.panel-content {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Metadata content styling */
+.ws-panel-content {
+    padding: 0;
+    width: 100%;
+}
+
+/* Full-width cover art container */
+.ws-cover-art-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* Full-width cover art image */
+.ws-full-cover-art {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Add some space between cover art and table */
+.ws-meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0 25px 0 !important;
+    box-sizing: border-box;
+}
+
+.ws-meta-table th, .ws-meta-table td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* Fixed width for columns */
+.ws-meta-table th:first-child,
+.ws-meta-table td:first-child {
+    width: 35%;
+}
+
+/* Add spacing at bottom of table to ensure scrolling reaches last entry */
+.ws-meta-table tbody tr:last-child td {
+    padding-bottom: 50px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body.has-panel .right-panel {
+        width: 50%;
+    }
+    
+    body.has-panel #app-content {
+        width: 50%;
+    }
+    
+    .panel {
+        width: 50vw;
+    }
+}
+
+/* Extremely small screens */
+@media (max-width: 480px) {
+    body.has-panel .right-panel {
+        width: 80%;
+    }
+    
+    body.has-panel #app-content {
+        width: 20%;
+    }
+    
+    .panel {
+        width: 80vw;
+    }
+}
+
+
+
+/* Fix panel content width */
+.ws-panel-content {
+    padding: 0;
+    width: 24vw;
+    margin: 1vw;
+}
+
+/* Fix table width and text wrapping */
+.ws-meta-table {
+    width: 100% !important; /* Use 100% of parent container (.ws-panel-content) */
+    table-layout: fixed; /* This is important for word wrapping */
+    word-break: break-word; /* Break words that are too long */
+}
+
+/* Ensure cells wrap text properly */
+.ws-meta-table td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    word-wrap: break-word; /* Legacy browsers */
+    overflow-wrap: break-word; /* Modern standard */
+    max-width: 0; /* This forces the cell to respect width constraints */
+}
+
+/* Make sure value column doesn't take too much space */
+.ws-meta-table td:last-child {
+    width: 65%;
+}
+
+
+
+/* Enhanced table cell text wrapping */
+.ws-meta-table td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: normal !important; /* Force text to wrap */
+    word-break: break-word !important; /* Break words if needed */
+    overflow-wrap: break-word !important; /* Modern property */
+    max-width: 0; /* Force width constraints */
+    height: auto !important; /* Allow height to expand */
+}
+
+/* Target the value column specifically */
+.ws-meta-table td:last-child {
+    width: 65%;
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for very long text */
+}
+
+/* Make sure the table rows can expand */
+.ws-meta-table tr {
+    height: auto !important;
+    vertical-align: top; /* Align text to top of cell */
+}
+
+/* Ensure the table cells don't have any max-height */
+.ws-meta-table td, .ws-meta-table th {
+    max-height: none !important;
+}
+
+
+
+
+/* Improve close button visibility and positioning */
+#panel-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px;
+    margin-left: auto; /* Push to right side */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+#panel-close:hover {
+    opacity: 1;
+}
+
+#panel-close img {
+    width: 16px;
+    height: 16px;
+    display: block; /* Ensure proper image display */
+}
+
+/* Make sure the panel header properly shows the title and close button */
+.panel-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--col-line-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}

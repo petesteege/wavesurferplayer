@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>wavesurferplayer</id>
+    <name>Wavesurfer Audio Player</name>
+    <summary>Replaces the default audio player with Wavesurfer.js on public share links</summary>
+    <description>
+        This app replaces the default audio player with Wavesurfer.js on public share links.
+        It provides waveform visualization and additional audio control features.
+    </description>
+    <version>0.1.1</version>
+    <licence>agpl</licence>
+    <author>Pete Steege</author>
+    <namespace>WavesurferPlayer</namespace>
+    <category>multimedia</category>
+    <category>tools</category>
+    <bugs>https://github.com/yourusername/wavesurferplayer/issues</bugs>
+    <dependencies>
+        <nextcloud min-version="25" max-version="999"/>
+    </dependencies>
+    <navigations>
+        <!-- Add navigation entries if needed -->
+    </navigations>
+</info>

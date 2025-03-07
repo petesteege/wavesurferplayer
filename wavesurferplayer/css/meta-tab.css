@@ -1,0 +1,247 @@
+/* audio-panel.css - Styles for the audio information panel */
+
+/* Add at the top of the file */
+:root {
+    --panel-margin-top: 270px;
+    --panel-height: calc(100vh - 310px);
+    --panel-margin-top-no-player: 50px;
+    --panel-height-no-player: calc(100vh - 50px);
+}
+
+/* Basic panel styling */
+.right-panel {
+    width: 0;
+    float: right;
+    background: var(--color-main-background, rgb(16,16,16));
+    overflow: hidden; /* Hide all overflow during transition */
+    margin-top: 270px;
+    height: calc(100vh - 310px);
+    transition: width 0.3s ease-in-out, margin-top 0.3s ease-in-out, height 0.3s ease-in-out;
+    max-height: 100vh;
+}
+
+/* Expanded panel state */
+body.has-panel .right-panel {
+    width: 35%;
+    overflow-y: auto; /* Allow vertical scrolling when open */
+}
+
+/* Inner panel container with fixed width */
+.panel {
+    width: 35vw; /* Match the expanded panel width */
+    min-width: 300px;
+}
+
+/* App content styling */
+#app-content {
+    float: left;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+}
+
+/* App content when panel is visible */
+body.has-panel #app-content {
+    width: 65%;
+    border-right: 1px solid var(--col-line-dim);
+}
+
+/* Panel header */
+.panel-header { 
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--col-line-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* Ensure positioning context */
+    height: 60px;
+}
+
+#panel-close {
+    position: absolute !important;
+    right: 9.6vw !important;
+    background: transparent !important;
+    border: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: block !important;
+    padding: 5px !important;
+    z-index: 1000 !important;
+    cursor: pointer !important;
+}
+
+#panel-close img {
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
+}
+
+#panel-close:hover {
+    opacity: 1;
+}
+
+
+
+/* Panel content area */
+.panel-content {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Metadata content styling */
+.ws-panel-content {
+    padding: 0;
+    width: 24vw;
+    margin: 1vw;
+    margin-bottom:50px;
+}
+
+/* Full-width cover art container */
+.ws-cover-art-container {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 50px;
+    display: block;
+    box-sizing: border-box;
+    overflow: hidden; /* Hide overflow during transition */
+}
+
+/* Full-width cover art image */
+.ws-full-cover-art {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Add some space between cover art and table */
+.ws-meta-table {
+    width: 100% !important;
+    border-collapse: collapse;
+    margin: 0 !important;
+    box-sizing: border-box;
+    table-layout: fixed; /* Important for word wrapping */
+    word-break: break-word; /* Break words that are too long */
+    font-size: 12px;
+    font-weight: 100;
+    color:rgb(115, 115, 115);
+}
+
+/* Table cells with improved text wrapping */
+.ws-meta-table td, .ws-meta-table th {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #616161;
+    white-space: normal !important; /* Force text to wrap */
+    word-break: break-word !important; /* Break words if needed */
+    overflow-wrap: break-word !important; /* Modern property */
+    max-width: 0; /* Force width constraints */
+    height: auto !important; /* Allow height to expand */
+    max-height: none !important;
+}
+
+/* Fixed width for first column */
+.ws-meta-table td:first-child {
+    width: 35%;
+}
+
+/* Target the value column specifically */
+.ws-meta-table td:last-child {
+    width: 65%;
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for very long text */
+}
+
+/* Make sure the table rows can expand */
+.ws-meta-table tr {
+    vertical-align: top; /* Align text to top of cell */
+    height: 51px !important;
+}
+
+/* Add spacing at bottom of table to ensure scrolling reaches last entry */
+.ws-meta-table tbody tr:last-child td {
+    padding-bottom: 50px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body.has-panel .right-panel {
+        width: 50%;
+    }
+    
+    body.has-panel #app-content {
+        width: 50%;
+    }
+    
+    .panel {
+        width: 50vw;
+    }
+
+    .ws-panel-content {
+        width: 40vw;
+        margin: 1vw;
+    }
+}
+
+/* Extremely small screens */
+@media (max-width: 480px) {
+    body.has-panel .right-panel {
+        width: 80%;
+    }
+    
+    body.has-panel #app-content {
+        width: 20%;
+    }
+    
+    .panel {
+        width: 80vw;
+    }
+
+    .ws-panel-content {
+        width: 70vw;
+        margin: 1vw;
+    }
+}
+
+
+
+
+/* Fix for view-toggle button to move with app-content */
+#view-toggle {
+    /* Make the toggle button move with app-content */
+    position: relative;
+    float: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Move the view-toggle when panel is open */
+body.has-panel #view-toggle {
+    transform: translateX(-3vw);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body.has-panel #view-toggle {
+        transform: translateX(-50vw);
+    }
+}
+
+@media (max-width: 480px) {
+    body.has-panel #view-toggle {
+        transform: translateX(-80vw);
+    }
+}
+
+/* Make panel extend to top when wavesurfer player is not visible */
+body:not(.has-wavesurfer-player) .right-panel {
+    margin-top: var(--panel-margin-top-no-player);
+    height: var(--panel-height-no-player);
+}
+
+/* When both player and panel are visible */
+body.has-wavesurfer-player.has-panel .right-panel {
+    margin-top: var(--panel-margin-top);
+    height: var(--panel-height);
+}

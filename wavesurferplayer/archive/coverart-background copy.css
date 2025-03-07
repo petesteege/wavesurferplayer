@@ -1,0 +1,39 @@
+/* Base app content styling */
+#app-content {
+  position: relative;
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Cover art background styling */
+.with-coverart-bg {
+  isolation: isolate;
+}
+
+/* Background overlay */
+#app-content.with-coverart-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(18, 18, 18, 0.82); /* Fixed percentage to decimal */
+  backdrop-filter: blur(10px);
+  z-index: 0; /* Changed from -1 to maintain stacking context */
+}
+
+/* Content layering */
+#app-content.with-coverart-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Audio viewer adjustments */
+#imgframe #viewer[data-handler="audios"].with-coverart-bg {
+  background: transparent !important;
+}
+
+/* Metadata table styling with cover art */
+#app-content.with-coverart-bg .ws-meta-table {
+  background-color: rgba(16, 16, 16, 0.7) !important;
+  color: #ffffff;
+  border-radius: 2px;
+  border: 7px solid rgba(16, 16, 16, 0.7);
+}

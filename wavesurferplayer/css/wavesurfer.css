@@ -1,0 +1,153 @@
+/* wavesurfer.css */
+
+
+  /* Player Layout */
+  .ws-player-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2rem;
+  }
+  
+  /* Waveform */
+  .ws-waveform {
+    order: 1;
+    flex: 1;
+  }
+  
+  /* Play control button */
+  .ws-play-btn {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 100% !important;
+    border: 2px solid #ffffffba !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 0;
+  }
+
+  .ws-play-btn:hover {
+
+    border: 2px solid #ffffff !important;
+
+
+  }
+
+  .plyr button {
+    border-radius: 100% !important;
+  }
+  
+  .ws-btn-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  wave[style*="z-index: 3"] {
+    border-right: 1px solid #3f79d6 !important;
+  }
+  
+  /* Controls order */
+  .ws-right-controls {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .slider-container {
+    position: relative;
+    height: 300px; /* Adjust this value to fit your layout */
+    display: flex;
+    align-items: center;
+}
+
+/* Vertical slider style */
+.ws-volume-slider {
+    -webkit-appearance: none;
+    width: 50%; /* Slider width */
+    height: 1px; /* Full height within the container */
+    background: #ddd; /* Track color */
+    transform-origin: center center;
+    margin: 0 auto; /* Center the slider */
+}
+
+
+select, button:not(.button-vue,[class^=vs__]), input, textarea, div[contenteditable=true], div[contenteditable=false] {
+  /* width: 130px; */
+  min-height: 1px !important;
+
+}
+  
+  .ws-time-display {
+    font-size: 14px;
+    color: #b4b1b1;
+    
+  }
+  
+
+
+  #imgframe #viewer[data-handler=audios] {
+    margin-top: 28vh !important;
+
+
+}
+  
+
+
+/* download button wavesurfer */
+
+.button>span[class*=" icon-"] {
+
+  opacity: .8;
+}
+
+.button>span[class*=" icon-"]:hover {
+
+  opacity: 1;
+  
+
+}
+
+.directDownload #downloadFile {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0;
+  background-color: transparent !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border: 2.5px solid #f5f5f5a1;
+  border-radius: 100px !important;
+  width: 60px;
+  height: 60px;
+}
+
+.directDownload #downloadFile:hover  {
+
+  border: 2.5px solid #ffffff;
+
+}
+
+/* Add after the .directDownload #downloadFile rule */
+.directDownload #downloadFile svg,
+.directDownload #downloadFile path {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Edge-specific fix */
+@supports (-ms-ime-align: auto) {
+    .directDownload #downloadFile svg,
+    .directDownload #downloadFile path {
+        fill: #ffffff !important;
+        color: #ffffff !important;
+        -ms-high-contrast-adjust: none;
+    }
+}

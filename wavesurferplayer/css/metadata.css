@@ -1,0 +1,94 @@
+/* metadata.css */
+
+.ws-metadata {
+    margin-top: 20px;
+    overflow-y: auto;
+    border-top: 1px solid #181818;
+    position: relative;
+    width: 80%;
+    /* Height will be set dynamically via JavaScript */
+    min-height: 100px;
+    max-height: none;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    transition: height 0.2s ease; /* Smooth transition when height changes */
+}
+
+.ws-meta-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ws-meta-table thead {
+    position: sticky;
+    top: 0;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    border-top: none;
+    background-color: var(--color-main-background);
+}
+
+.ws-meta-table th, .ws-meta-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #181818;
+    text-align: left;
+}
+
+.ws-meta-table th {
+    font-weight: bold;
+}
+
+
+
+
+.ws-meta-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Player positioning - single rule with transition */
+#imgframe #viewer[data-handler=audios] {
+    margin-top: 28vh !important;
+    transition: margin-top 0.3s ease;
+}
+
+/* This class will be toggled by JS when metadata is visible */
+#imgframe #viewer[data-handler=audios].with-metadata {
+    margin-top: 10vh !important;
+}
+
+.directDownload {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    color:white;
+}
+
+.directDownload #downloadFile {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Custom scrollbar styling */
+.ws-metadata::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ws-metadata::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.ws-metadata::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+

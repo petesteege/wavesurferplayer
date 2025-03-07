@@ -1,0 +1,3 @@
+MULTI SHARE
+
+* if an image is selected in the list it triggers it to add to the background as in singleshare.

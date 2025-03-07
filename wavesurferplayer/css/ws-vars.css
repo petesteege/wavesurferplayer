@@ -1,0 +1,98 @@
+
+:root {
+
+    --var-padding-files: 25px 5% 25px 5% !important;
+
+    --col-line-dim: rgb(31,31,31);
+
+    --original-icon-download-dark: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjIiPjxwYXRoIGQ9Im0xMiAxNi01LTUgMS40LTEuNDUgMi42IDIuNlY0aDJ2OC4xNWwyLjYtMi42TDE3IDExbC01IDVabS02IDRjLS41NSAwLTEuMDIxLS4xOTYtMS40MTItLjU4N0ExLjkyNyAxLjkyNyAwIDAgMSA0IDE4di0zaDJ2M2gxMnYtM2gydjNhMS45MyAxLjkzIDAgMCAxLS41ODcgMS40MTNBMS45MyAxLjkzIDAgMCAxIDE4IDIwSDZaIiBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm8iIHRyYW5zZm9ybT0ibWF0cml4KC44NzUgMCAwIC44NzUgLTIuNSAtMi41KSIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==) !important;
+    
+    --vs-selected-bg: transparent !important;
+
+    --col-selected: rgba(68, 68, 68, 0.387);
+
+    --col-border-light: rgb(36, 36, 36);
+
+    --col-icon: rgb(220, 220, 220);
+}
+
+
+
+/* set font colours */
+
+table td.filename .nametext .innernametext,
+span.extension,
+a,
+td.filesize,
+td.date .modified.live-relative-timestamp,
+.ws-meta-table td, .ws-meta-table th,
+li.crumb>a,
+.panel-header,
+#save-external-share, #directLink
+
+{
+    color: var(--col-font-white) !important;
+}
+
+
+
+
+
+/* Apply hover effect to all rows except the first (header) and last row */
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.066) !important;
+}
+
+
+#filestable.files-fileList tr.selected,
+#filestable.files-fileList tr.searchResult.selected,
+.publicpreview #filestable tr.selected,
+.publicpreview #filestable tr.searchResult.selected,
+table.multiselect thead th{
+
+    background-color: transparent !important;
+}
+
+
+.files-filestable.view-grid:not(.hidden) thead tr th {
+    border:none !important;
+}
+
+/* set lighter colour lines */
+
+
+
+
+
+
+/* set icons */
+.icon.icon-download        { mask-image: url(/apps/wavesurferplayer/img/download.svg) !important; }
+.crumbhome a.icon-home     { mask-image: url(/apps/wavesurferplayer/img/home.svg)     !important; }
+.icon-toggle-pictures      { mask-image: url(/apps/wavesurferplayer/img/grid.svg)     !important; }
+.icon-toggle-filelist      { mask-image: url(/apps/wavesurferplayer/img/list.svg)     !important; }
+
+.icon.icon-download,
+.crumbhome a.icon-home,
+.icon-toggle-pictures,
+.icon-toggle-filelist
+{
+    background: var(--col-icon) !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+    -webkit-mask-position: center !important;
+    mask-position: center !important;
+}
+
+
+#view-toggle {
+    padding: 50px 22px 22px 22px !important;
+}
+
+.files-control {
+    padding-top: 5px !important;
+}
+
+
+
+/* Apply color to specific icon types */
+/* Color mapping for Nextcloud file type icons */

@@ -1,0 +1,38 @@
+/* Cover art background styling */
+#app-content.with-coverart-bg {
+    position: relative;
+    isolation: isolate;
+  }
+  
+  #app-content.with-coverart-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(18, 18, 18, 82%); /* Darkening overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: -1;
+  }
+  
+  /* Ensure content remains visible over the background */
+  #app-content.with-coverart-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Animation for smooth background transitions */
+  #app-content {
+    transition: background-image 0.5s ease-in-out;
+  }
+  
+  /* Adjust viewer positioning when cover art is used */
+  #imgframe #viewer[data-handler="audios"].with-coverart-bg {
+    background: transparent !important; /* Remove default background */
+  }
+  
+  /* Modify tables when cover art background is enabled */
+  #app-content.with-coverart-bg .ws-meta-table {
+    background-color: rgba(16, 16, 16, 0.7) !important;
+    color: #ffffff;
+    border-radius: 2px;
+    border: 7px solid rgba(16, 16, 16,0.7);
+  }
